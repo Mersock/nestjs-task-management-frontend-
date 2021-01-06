@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  nestjs-taks-front:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: nestjs-task-management-front
+    ports:
+      - "3001:3000"
+    volumes:
+      - /usr/app/node_modules
+      - .:/usr/app/
+    networks: 
+      - nestjs-api-network 
+
+networks: 
+  nestjs-api-network:
+    name: nestjs-api-network
+    driver: bridge 
